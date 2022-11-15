@@ -1,8 +1,26 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lineas_sig/blocs/blocs.dart';
 
 class ManualMarker extends StatelessWidget {
   const ManualMarker({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SearchBloc, SearchState>(
+      builder: (context, state) {
+        // si es true me rederige al manualmarker
+        return state.displayManualMarker
+            ? const _ManualMarkerBody()
+            : const SizedBox();
+      },
+    );
+  }
+}
+
+class _ManualMarkerBody extends StatelessWidget {
+  const _ManualMarkerBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +50,8 @@ class ManualMarker extends StatelessWidget {
                 left: 40,
                 child: MaterialButton(
                   minWidth: size.width - 120,
-                  child: Text('Confirmar destino',
+                  // ignore: sort_child_properties_last
+                  child: const Text('Confirmar destino',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w300,

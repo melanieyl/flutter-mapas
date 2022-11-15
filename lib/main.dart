@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lineas_sig/blocs/blocs.dart';
+import 'package:lineas_sig/blocs/search/search_bloc.dart';
 import 'package:lineas_sig/screens/screens.dart';
 
 void main() {
@@ -9,6 +10,7 @@ void main() {
       BlocProvider(create: (context) => GpsBloc()),
       BlocProvider(create: (context) => LocationBloc()),
       BlocProvider(create: (context) => MapBloc()),
+      BlocProvider(create: (context) => SearchBloc()),
     ],
     child: const MainClass(),
   ));
